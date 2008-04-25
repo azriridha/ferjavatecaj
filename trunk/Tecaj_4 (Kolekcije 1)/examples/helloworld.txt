@@ -1,0 +1,9 @@
+#ajfkasd
+		load r1, @prvi
+		load r2, @drugi
+		add r0, r1, r2
+		echo r0
+		halt
+
+@prvi: DEFSTR 2
+@drugi: DEFINT 3
