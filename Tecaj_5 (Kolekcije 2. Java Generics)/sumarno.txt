@@ -1,0 +1,4 @@
+0036010001	Anic	Anica	7,00
+0036010004	Štefić	Marija	-1,40
+0036010003	Tivić	Ivo	7,00
+0036010002	Tivić	Pero	-2,33
