@@ -14,12 +14,12 @@ import java.awt.LayoutManager;
  */
 public class GraphLayout implements LayoutManager {
 	  
-	public static final String SOUTH = "South";
-	public static final String WEST = "West";
+	public static final String DOWN = "Down";
+	public static final String LEFT = "Left";
 	public static final String CENTER = "Center";
 
-	private Component south;
-	private Component west;
+	private Component down;
+	private Component left;
 	private Component center;
 
 	// Some constants for use with calcSize().
@@ -44,10 +44,10 @@ public class GraphLayout implements LayoutManager {
 		
 		if (str == null || str.equals(CENTER))
 			center = component;
-		else if (str.equals(SOUTH))
-			south = component;
-		else if (str.equals(WEST))
-			west = component;
+		else if (str.equals(DOWN))
+			down = component;
+		else if (str.equals(LEFT))
+			left = component;
 		else
 			throw new IllegalArgumentException("Constraint value not valid: " + str);
 	}
@@ -61,28 +61,28 @@ public class GraphLayout implements LayoutManager {
 	public void layoutContainer(Container target)
 	{
 		Insets i = target.getInsets();
-		int top = i.top;
-		int bottom = target.getHeight() - i.bottom;
-		int left = i.left;
-		int right = target.getWidth() - i.right;
+		int dtop = i.top;
+		int dbottom = target.getHeight() - i.bottom;
+		int dleft = i.left;
+		int dright = target.getWidth() - i.right;
 		
-		if (south != null)
+		if (down != null)
 		{
-			Dimension s = calcCompSize(south, PREF);
-			Dimension w = calcCompSize(west, PREF);
-			south.setBounds(left + w.width, bottom - s.height, right - (left + w.width), s.height);
-			bottom -= s.height;
+			Dimension s = calcCompSize(down, PREF);
+			Dimension w = calcCompSize(left, PREF);
+			down.setBounds(dleft + w.width, dbottom - s.height, dright - (dleft + w.width), s.height);
+			dbottom -= s.height;
 		}
 		
-		if (west != null)
+		if (left != null)
 		{
-			Dimension w = calcCompSize(west, PREF);
-			west.setBounds(left, top, w.width, bottom - top);
-			left += w.width;
+			Dimension w = calcCompSize(left, PREF);
+			left.setBounds(dleft, dtop, w.width, dbottom - dtop);
+			dleft += w.width;
 		}
 		
 		if (center != null)
-			center.setBounds(left, top, right - left, bottom - top);
+			center.setBounds(dleft, dtop, dright - dleft, dbottom - dtop);
 	}
 	
 	/**
@@ -107,8 +107,8 @@ public class GraphLayout implements LayoutManager {
 	{
 		Insets ins = target.getInsets();
 		
-		Dimension sdim = calcCompSize(south, what);
-		Dimension wdim = calcCompSize(west, what);
+		Dimension sdim = calcCompSize(down, what);
+		Dimension wdim = calcCompSize(left, what);
 		Dimension cdim = calcCompSize(center, what);
 		
 		int width = wdim.width;
@@ -165,10 +165,10 @@ public class GraphLayout implements LayoutManager {
 	@Override
 	public void removeLayoutComponent(Component arg0)
 	{
-		if (south == arg0)
-			south = null;
-		if (west == arg0)
-			west = null;
+		if (down == arg0)
+			down = null;
+		if (left == arg0)
+			left = null;
 		if (center == arg0)
 			center = null;
 	}

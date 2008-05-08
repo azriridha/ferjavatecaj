@@ -34,12 +34,13 @@ public class GraphLayoutDemo extends JFrame{
 		p1.setBackground(Color.RED);
 		p2.setBackground(Color.GREEN);
 		p3.setBackground(Color.BLUE);
-		p1.setPreferredSize(new Dimension(60,200));
-		p2.setPreferredSize(new Dimension(150,20));
+		p1.setPreferredSize(new Dimension(60,100));
+		p2.setPreferredSize(new Dimension(50,40));
 		this.getContentPane().setLayout(new GraphLayout());
-		this.getContentPane().add(p1,GraphLayout.WEST);
-		this.getContentPane().add(p2,GraphLayout.SOUTH);
+		this.getContentPane().add(p1,GraphLayout.LEFT);
+		this.getContentPane().add(p2,GraphLayout.DOWN);
 		this.getContentPane().add(p3,GraphLayout.CENTER);
+		
 		
 		this.pack();
 		this.setLocationRelativeTo(null);
