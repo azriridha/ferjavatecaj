@@ -1,13 +1,27 @@
 package hr.fer.zemris.java.tecaj_5.vjezba.zad3;
 
 import java.util.Random;
-
+/**
+ * Dretva proizvodjac. Periodicno uzima cijele brojeve iz kolekcije zadataka i ispisuje njihove 
+ * kvadrate na ekran
+ * 
+ * @author Hrvoje Torbasinovic
+ *
+ */
 public class Proizvodjac extends Thread {
 
 	private int donjaGranica;
 	private int velicinaIntervala;
 	private Zadaci<Integer> zadaci;
 
+	/**
+	 * Instancira novog proizvodjaca. Racuna se donja granica intervala i velicina intervala 
+	 * iz parametara B i C 
+	 * 
+	 * @param B srednja vrijednost cekanja
+	 * @param C maksimalno odstupanje od srednje vrijednosti
+	 * @param zadaci kolekcija zadataka
+	 */
 	public Proizvodjac(int B, int C, Zadaci<Integer> zadaci)
 	{
 		if (B < C || B < 0 || C < 0)
@@ -17,6 +31,9 @@ public class Proizvodjac extends Thread {
 		this.zadaci = zadaci;
 	}
 
+	/**
+	 * glavna metoda koja pokrece dretvu
+	 */
 	@Override
 	public void run()
 	{

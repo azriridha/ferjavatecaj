@@ -4,7 +4,16 @@ package hr.fer.zemris.java.tecaj_5.vjezba.zad3;
 public class Pokretac {
 
 	/**
-	 * @param args
+	 * Glavni program koji pokrece proizvodjace i potrosace ciji je broj zadan u ulaznim argumentima
+	 * ima 6 ulaznih argumenata, A, B, C, D, E, F, koji su cijeli brojevi. Znacenje je slijedece
+	 * 
+	 * @param args String koji se sastoji od 6 argumenata odvojenih razmakom
+	 * A predstavlja broj proizvodjaca koje treba pokrenuti
+	 * B predstavlja srednju vrijednost cekanja prije no sto proizvodjac proizvede neki zadatak
+	 * C predstavlja maksimalno odstupanje od srednje vrijednosti B
+	 * D predstavlja broj potrosaca koje treba pokrenuti
+	 * E predstavlja srednju vrijednost cekanja prije no sto potrosac obradi neki zadatak
+	 * F predstavlja maksimalno odstupanje od srednje vrijednosti E
 	 */
 	public static void main(String[] args)
 	{
