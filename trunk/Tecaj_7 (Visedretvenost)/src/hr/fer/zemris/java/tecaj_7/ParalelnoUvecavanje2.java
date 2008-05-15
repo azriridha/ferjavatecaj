@@ -79,7 +79,9 @@ public class ParalelnoUvecavanje2 {
 		public void run() {
 			try {
 				obaviPosao();
-			} catch (InterruptedException ignroable) {}
+			} catch (InterruptedException ignroable) {
+				System.out.print("1");
+			}
 		}
 
 		/**
