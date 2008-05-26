@@ -41,7 +41,7 @@ public class Zaposlenik implements Comparable<Zaposlenik> {
 		return sifra;
 	}
 	
-	
+	@Override
 	public String toString(){
 		return "Zaposlenik: sifra=" + sifra +
 			",prezime=" + prezime +
@@ -49,6 +49,7 @@ public class Zaposlenik implements Comparable<Zaposlenik> {
 			",placa=" + placa;
 	}
 	
+	@Override
 	public boolean equals(Object arg0){
 		if (arg0==null) return false;
 		System.out.println("Usporedjujem " + this + " i " + arg0);
