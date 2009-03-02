@@ -18,7 +18,7 @@ public class Zadatak01_01 {
 		System.out.println("Aritmeticka sredina iznosi " + formatter.format(aritmetickaSredina(polje)) + ".");
 		System.out.println("Geometrijska sredina iznosi " + formatter.format(geometrijskaSredina(polje)) + ".");
 		System.out.println("Harmonijska sredina iznosi " + formatter.format(harmonijskaSredina(polje)) + ".");
-		
+	
 	}
 	
 	public static double aritmetickaSredina(double[] polje)
