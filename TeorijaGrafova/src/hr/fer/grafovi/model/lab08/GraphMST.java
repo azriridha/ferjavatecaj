@@ -1,4 +1,4 @@
-package hr.fer.grafovi.model.lab8;
+package hr.fer.grafovi.model.lab08;
 
 import hr.fer.grafovi.model.Edge;
 import hr.fer.grafovi.model.Graph;
