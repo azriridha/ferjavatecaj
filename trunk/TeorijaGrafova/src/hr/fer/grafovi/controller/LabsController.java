@@ -1,10 +1,10 @@
 package hr.fer.grafovi.controller;
 
 import hr.fer.grafovi.model.Graph;
-import hr.fer.grafovi.model.lab6.Dijkstra;
-import hr.fer.grafovi.model.lab7.KirchhoffsTheorem;
-import hr.fer.grafovi.model.lab7.SpanningTree;
-import hr.fer.grafovi.model.lab8.GraphMST;
+import hr.fer.grafovi.model.lab05.Dijkstra;
+import hr.fer.grafovi.model.lab07.KirchhoffsTheorem;
+import hr.fer.grafovi.model.lab07.SpanningTree;
+import hr.fer.grafovi.model.lab08.GraphMST;
 
 public class LabsController
 {
@@ -61,6 +61,17 @@ public class LabsController
 		System.out.println("Broj razapinjucih stabala: " + kt.getNumSpanningTrees());
 		SpanningTree st = new SpanningTree(g);
 		st.showST();
+	}
+	
+	public void findCriticalPath()
+	{
+		System.out.println("start");
+		Stopwatch.start();
+		
+		Graph g = MainController.ctrl.getGraph();
+		
+		Stopwatch.printElapsedTime();
+		
 	}
 
 	private static class Stopwatch

@@ -1,4 +1,4 @@
-package hr.fer.grafovi.model.lab6;
+package hr.fer.grafovi.model.lab05;
 
 public class Vertex implements Comparable<Vertex>
 {
