@@ -5,6 +5,7 @@ import hr.fer.grafovi.model.lab05.Dijkstra;
 import hr.fer.grafovi.model.lab07.KirchhoffsTheorem;
 import hr.fer.grafovi.model.lab07.SpanningTree;
 import hr.fer.grafovi.model.lab08.GraphMST;
+import hr.fer.grafovi.model.lab13.CriticalPath;
 
 public class LabsController
 {
@@ -69,6 +70,10 @@ public class LabsController
 		Stopwatch.start();
 		
 		Graph g = MainController.ctrl.getGraph();
+		
+		CriticalPath cp = new CriticalPath(g);
+		System.out.print("Kriticni put... ");
+		cp.showCriticalPath();
 		
 		Stopwatch.printElapsedTime();
 		

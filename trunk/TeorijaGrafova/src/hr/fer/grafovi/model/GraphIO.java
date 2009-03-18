@@ -30,7 +30,7 @@ public class GraphIO
 			digraph = true;
 			line = br.readLine();
 		}
-		if (line.equalsIgnoreCase("weighted"))
+		if (line.equalsIgnoreCase("tezinski"))
 		{
 			weighted = true;
 			line = br.readLine();
@@ -209,7 +209,7 @@ public class GraphIO
 		}
 		if(g.weighted())
 		{
-			bw.write("weighted");
+			bw.write("tezinski");
 			bw.newLine();
 		}
 		bw.write("broj vrhova:" + g.V());
