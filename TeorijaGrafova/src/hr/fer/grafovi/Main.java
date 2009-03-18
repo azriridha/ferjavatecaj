@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -34,7 +35,11 @@ public class Main {
 	 * @throws InvocationTargetException 
 	 * @throws InterruptedException 
 	 */
-	public static void main(String[] args) throws UnsupportedLookAndFeelException, InterruptedException, InvocationTargetException {
+	public static void main(String[] args) throws InterruptedException, InvocationTargetException {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception ignorable) {}
+		
 		SwingUtilities.invokeAndWait(new Runnable()
 		{
 			public void run()

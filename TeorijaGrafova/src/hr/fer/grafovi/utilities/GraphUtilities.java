@@ -41,9 +41,9 @@ public class GraphUtilities
 		AdjList a = g.getAdjList(v);
 		for (Edge e = a.beg(); !a.end(); e = a.nxt())
 		{
-			int w = e.getW();
+			int w = e.other(v);
 			if (!startVisit[w])
-				if (!dfsR(new Edge(v, w), g, startVisit, endVisit))
+				if (!dfsR(e, g, startVisit, endVisit))
 					return false;
 			if (!endVisit[w])
 				return false;

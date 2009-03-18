@@ -138,72 +138,57 @@ public class LabsView extends JPanel implements PropertyChangeListener
 	{
 
 		@Override
-		public void actionPerformed(ActionEvent e)
+		public void actionPerformed(final ActionEvent e)
 		{
 			ctrl.clearInfo();
-			if (e.getActionCommand().equals(POVEZANOST))
+			new Thread(new Runnable()
 			{
-				// TODO
-			}
-			else if (e.getActionCommand().equals(DIJKSTRA))
-			{
-				new Thread(new Runnable()
+				@Override
+				public void run()
 				{
-					@Override
-					public void run()
+					if (e.getActionCommand().equals(POVEZANOST))
+					{
+						// TODO
+					}
+					else if (e.getActionCommand().equals(DIJKSTRA))
 					{
 						labsCtrl.startDijkstra(sourceSpinnerModel.getNumber().intValue(), sinkSpinnerModel.getNumber().intValue());
 					}
-				}).start();
-			}
-			else if (e.getActionCommand().equals(TRGOVACKI_PUTNIK))
-			{
-				// TODO
-			}
-			else if (e.getActionCommand().equals(RAZAPINJUCA_STABLA))
-			{
-				new Thread(new Runnable()
-				{
-				
-					@Override
-					public void run()
+					else if (e.getActionCommand().equals(TRGOVACKI_PUTNIK))
+					{
+						// TODO
+					}
+					else if (e.getActionCommand().equals(RAZAPINJUCA_STABLA))
 					{
 						labsCtrl.countSpanningTrees();
 					}
-				}).start();
-			}
-			else if (e.getActionCommand().equals(MIN_RAZAPINJUCE_STABLO))
-			{
-				new Thread(new Runnable()
-				{
-				
-					@Override
-					public void run()
+					else if (e.getActionCommand().equals(MIN_RAZAPINJUCE_STABLO))
 					{
 						labsCtrl.startKruskal();
 					}
-				}).start();
+					else if (e.getActionCommand().equals(PLANARNOST))
+					{
+						// TODO
+					}
+					else if (e.getActionCommand().equals(BOJANJE_VRHOVA))
+					{
+						// TODO
+					}
+					else if (e.getActionCommand().equals(BOJANJE_BRIDOVA))
+					{
+						// TODO
+					}
+					else if (e.getActionCommand().equals(SETNJA))
+					{
+						labsCtrl.findCriticalPath();
+					}
+					else if (e.getActionCommand().equals(SPARIVANJE))
+					{
+						// TODO
+					}
 			}
-			else if (e.getActionCommand().equals(PLANARNOST))
-			{
-				// TODO
-			}
-			else if (e.getActionCommand().equals(BOJANJE_VRHOVA))
-			{
-				// TODO
-			}
-			else if (e.getActionCommand().equals(BOJANJE_BRIDOVA))
-			{
-				// TODO
-			}
-			else if (e.getActionCommand().equals(SETNJA))
-			{
-				// TODO
-			}
-			else if (e.getActionCommand().equals(SPARIVANJE))
-			{
-				// TODO
-			}
+		}).start();
+		
 		}
 	}
 
