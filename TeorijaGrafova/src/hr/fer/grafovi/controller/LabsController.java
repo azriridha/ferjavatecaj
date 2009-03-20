@@ -6,6 +6,7 @@ import hr.fer.grafovi.model.lab07.KirchhoffsTheorem;
 import hr.fer.grafovi.model.lab07.SpanningTree;
 import hr.fer.grafovi.model.lab08.GraphMST;
 import hr.fer.grafovi.model.lab13.CriticalPath;
+import hr.fer.grafovi.model.lab14.MarriageProblem;
 
 public class LabsController
 {
@@ -75,8 +76,26 @@ public class LabsController
 		System.out.print("Kriticni put... ");
 		cp.showCriticalPath();
 		
+		System.out.print("proteklo vrijeme: ");
 		Stopwatch.printElapsedTime();
+	}
+	
+	public void startMatching()
+	{
+		System.out.println("start");
+		Stopwatch.start();
 		
+		Graph g = MainController.ctrl.getGraph();
+		
+		try {
+			MarriageProblem mp = new MarriageProblem(g);
+			System.out.println("Broj potpunih sparivanja: " + mp.getNumberOfCompleteMatchings());
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.print("proteklo vrijeme: ");
+		Stopwatch.printElapsedTime();
 	}
 
 	private static class Stopwatch
