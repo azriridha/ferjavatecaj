@@ -184,7 +184,7 @@ public class LabsView extends JPanel implements PropertyChangeListener
 					}
 					else if (e.getActionCommand().equals(SPARIVANJE))
 					{
-						// TODO
+						labsCtrl.startMatching();
 					}
 			}
 		}).start();
