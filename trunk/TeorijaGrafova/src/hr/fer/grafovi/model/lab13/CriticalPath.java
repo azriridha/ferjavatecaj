@@ -2,6 +2,7 @@ package hr.fer.grafovi.model.lab13;
 
 import hr.fer.grafovi.model.Edge;
 import hr.fer.grafovi.model.Graph;
+import hr.fer.grafovi.model.WrongGraphException;
 import hr.fer.grafovi.utilities.GraphUtilities;
 
 public class CriticalPath {
@@ -9,13 +10,10 @@ public class CriticalPath {
 	private LongestPath lp = null;
 	private int endTask = 0;
 	
-	public CriticalPath(Graph g)
+	public CriticalPath(Graph g) throws WrongGraphException
 	{
 		if (!GraphUtilities.isDAG(g))
-		{
-			System.out.println("Graf nije usmjeren i aciklicki");
-			return;
-		}
+			throw new WrongGraphException("Graf mora biti usmjeren i aciklicki");
 		lp = new LongestPath(g);
 		for (int i = 1; i < g.V(); i++)
 			if (lp.distance(i) > lp.distance(endTask))

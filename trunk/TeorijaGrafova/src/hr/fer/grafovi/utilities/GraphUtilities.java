@@ -28,6 +28,25 @@ public class GraphUtilities
 	}
 	
 	/**
+	 * Metoda koja provjerava da li je graf potpun
+	 * @param g graf koji se provjerava
+	 * @return true ako je graf potpun
+	 */
+	public static boolean isComplete(Graph g)
+	{
+		for (int v = 0; v < g.V(); v++)
+		{
+			int degree = 0;
+			AdjList a = g.getAdjList(v);
+			for (a.beg(); !a.end(); a.nxt())
+				degree++;
+			if (degree != g.V() - 1)
+				return false;
+		}
+		return true;
+	}
+	
+	/**
 	 * Metoda koja se rekurzivno poziva pri provjeri da li usmjereni graf sadrzi barem jedan ciklus.
 	 * @param edge brid kojim trenutno prolazimo
 	 * @param g graf koji provjeravamo
@@ -85,18 +104,6 @@ public class GraphUtilities
 		return edges;
 	}
 	
-//	public static int[] GraphDegree(Graph g)
-//	{
-//		int deg[] = new int[g.V()];
-//		for (int v = 0; v < g.V(); v++)
-//		{
-//			deg[v] = 0;
-//			AdjList a = g.getAdjList(v);
-//			for (a.beg(); !a.end(); a.nxt())
-//				deg[v]++;
-//		}
-//		return deg;
-//	}
 
 	/**
 	 * Komparator koji sluzi za sortiranje bridova po tezini. Nije konzistentan sa metodom equals u klasi Edge

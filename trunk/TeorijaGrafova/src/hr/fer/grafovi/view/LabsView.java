@@ -148,7 +148,7 @@ public class LabsView extends JPanel implements PropertyChangeListener
 				{
 					if (e.getActionCommand().equals(POVEZANOST))
 					{
-						// TODO
+						labsCtrl.findCycles();
 					}
 					else if (e.getActionCommand().equals(DIJKSTRA))
 					{
@@ -156,7 +156,7 @@ public class LabsView extends JPanel implements PropertyChangeListener
 					}
 					else if (e.getActionCommand().equals(TRGOVACKI_PUTNIK))
 					{
-						// TODO
+						labsCtrl.startTravelingSalesman();
 					}
 					else if (e.getActionCommand().equals(RAZAPINJUCA_STABLA))
 					{
