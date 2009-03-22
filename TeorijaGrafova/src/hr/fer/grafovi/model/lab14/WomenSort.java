@@ -3,6 +3,7 @@ package hr.fer.grafovi.model.lab14;
 import hr.fer.grafovi.model.AdjList;
 import hr.fer.grafovi.model.Edge;
 import hr.fer.grafovi.model.Graph;
+import hr.fer.grafovi.model.WrongGraphException;
 
 public class WomenSort 
 {
@@ -15,17 +16,17 @@ public class WomenSort
 	private int[] degree;
 	private int numberOfWomen;
 	
-	public WomenSort(Graph g)
+	public WomenSort(Graph g) throws WrongGraphException
 	{
 		if (g.directed())
-			throw new IllegalArgumentException("Graf ne smije biti usmjeren");
+			throw new WrongGraphException("Graf ne smije biti usmjeren");
 		this.g = g;
 		vertexSex = new int[g.V()];
 		findWomen();
 		sortWomen();
 	}
 
-	private void findWomen()
+	private void findWomen() throws WrongGraphException
 	{
 		for (int v = g.V() - 1; v >= 0; v--)
 		{
@@ -40,7 +41,7 @@ public class WomenSort
 			{
 				int w = e.other(v);
 				if (vertexSex[w] == M)
-					throw new IllegalArgumentException("Graf nije pravilno zadani bipartitni graf");
+					throw new WrongGraphException("Graf nije pravilno zadani bipartitni graf");
 				vertexSex[w] = F;
 			}
 		}
@@ -56,7 +57,7 @@ public class WomenSort
 				degree[v]++;
 				int w = e.other(v);
 				if (vertexSex[w] != M)
-					throw new IllegalArgumentException("Graf nije pravilno zadani bipartitni graf");
+					throw new WrongGraphException("Graf nije pravilno zadani bipartitni graf");
 			}
 		}
 	}

@@ -3,6 +3,7 @@ package hr.fer.grafovi.model.lab14;
 import hr.fer.grafovi.model.AdjList;
 import hr.fer.grafovi.model.Edge;
 import hr.fer.grafovi.model.Graph;
+import hr.fer.grafovi.model.WrongGraphException;
 
 public class MarriageProblem {
 	
@@ -13,7 +14,7 @@ public class MarriageProblem {
 	private boolean[] taken;
 	private int[] matching;
 	
-	public MarriageProblem(Graph g)
+	public MarriageProblem(Graph g) throws WrongGraphException
 	{
 		this.g = g;
 		ws = new WomenSort(g);
