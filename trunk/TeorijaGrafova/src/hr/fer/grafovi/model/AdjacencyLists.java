@@ -1,6 +1,6 @@
 package hr.fer.grafovi.model;
 
-public class AdjecencyLists implements Graph
+public class AdjacencyLists implements Graph
 {
 	private int Vcnt;
 	private int Ecnt;
@@ -8,12 +8,12 @@ public class AdjecencyLists implements Graph
 	private final boolean weighted;
 	private Node adj[];
 
-	public AdjecencyLists(int vcnt)
+	public AdjacencyLists(int vcnt)
 	{
 		this(vcnt, false, false);
 	}
 	
-	public AdjecencyLists(int vcnt, boolean weighted, boolean digraph)
+	public AdjacencyLists(int vcnt, boolean weighted, boolean digraph)
 	{
 		this.weighted = weighted;
 		this.digraph = digraph;
@@ -74,12 +74,16 @@ public class AdjecencyLists implements Graph
 		if(adj[v] == null)
 			return;
 		if (adj[v].e.other(v) == w)
+		{
+			Ecnt--;
 			adj[v] = adj[v].next;
+		}
 		else
 			for (Node i = adj[v]; i.next != null; i = i.next)
 				if (i.next.e.other(v) == w)
 				{
 					i.next = i.next.next;
+					Ecnt--;
 					break;
 				}
 		if (digraph)

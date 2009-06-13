@@ -2,14 +2,17 @@ package hr.fer.grafovi.controller;
 
 import hr.fer.grafovi.model.Graph;
 import hr.fer.grafovi.model.WrongGraphException;
-import hr.fer.grafovi.model.lab03.LongestClosedTrail;
-import hr.fer.grafovi.model.lab03.ShortestCycle;
 import hr.fer.grafovi.model.lab04.TravellingSalesmanExact;
 import hr.fer.grafovi.model.lab04.TravellingSalesmanHeuristic;
 import hr.fer.grafovi.model.lab05.Dijkstra;
+import hr.fer.grafovi.model.lab06.LongestClosedTrail;
+import hr.fer.grafovi.model.lab06.ShortestCycle;
 import hr.fer.grafovi.model.lab07.KirchhoffsTheorem;
 import hr.fer.grafovi.model.lab07.SpanningTree;
 import hr.fer.grafovi.model.lab08.GraphMST;
+import hr.fer.grafovi.model.lab09.Demoucron;
+import hr.fer.grafovi.model.lab11.VertexColoring;
+import hr.fer.grafovi.model.lab12.EdgeColoring;
 import hr.fer.grafovi.model.lab13.CriticalPath;
 import hr.fer.grafovi.model.lab14.MarriageProblem;
 
@@ -177,6 +180,66 @@ public class LabsController
 		}
 		System.out.print("proteklo vrijeme: ");
 		Stopwatch.printElapsedTime();
+	}
+	
+	public void colorVertices()
+	{
+		System.out.println("start");
+		Stopwatch.start();
+		
+		Graph g = MainController.ctrl.getGraph();
+		if (g == null)
+			return;
+		
+		VertexColoring vc = new VertexColoring(g);
+		if (vc.is3Colorable())
+		{
+			System.out.println("Graf je 3-obojiv");
+			vc.printColoring();
+		}
+		else
+			System.out.println("Graf nije 3-obojiv");
+		
+		System.out.print("proteklo vrijeme: ");
+		Stopwatch.printElapsedTime();
+		
+	}
+	
+	public void colorEdges()
+	{
+		System.out.println("start");
+		Stopwatch.start();
+		
+		Graph g = MainController.ctrl.getGraph();
+		if (g == null)
+			return;
+		
+		EdgeColoring ec = new EdgeColoring(g);
+		if (ec.is3Colorable())
+		{
+			System.out.println("Graf je bridno 3-obojiv");
+			ec.printColoring();
+		}
+		else
+			System.out.println("Graf nije bridno 3-obojiv");
+		
+		System.out.print("proteklo vrijeme: ");
+		Stopwatch.printElapsedTime();	
+	}
+	
+	public void planarityTest()
+	{
+		System.out.println("start");
+		Stopwatch.start();
+		
+		Graph g = MainController.ctrl.getGraph();
+		if (g == null)
+			return;
+		
+		Demoucron d = new Demoucron(g);
+		
+		System.out.print("proteklo vrijeme: ");
+		Stopwatch.printElapsedTime();	
 	}
 
 	private static class Stopwatch

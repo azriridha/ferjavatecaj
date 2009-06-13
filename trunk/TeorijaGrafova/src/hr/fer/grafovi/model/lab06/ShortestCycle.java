@@ -1,4 +1,4 @@
-package hr.fer.grafovi.model.lab03;
+package hr.fer.grafovi.model.lab06;
 
 import hr.fer.grafovi.model.AdjList;
 import hr.fer.grafovi.model.Edge;

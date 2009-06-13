@@ -52,7 +52,7 @@ public class GraphIO
 	private static Graph loadAdjecencyLists(BufferedReader br, int brojVrhova, boolean digraph, boolean weighted) throws IOException
 	{
 		int v,w;
-		Graph g = new AdjecencyLists(brojVrhova, weighted, digraph);
+		Graph g = new AdjacencyLists(brojVrhova, weighted, digraph);
 		String line;
 		String[] splitLine;
 		try{
@@ -97,7 +97,7 @@ public class GraphIO
 
 	private static Graph loadAdjecencyMatrix(BufferedReader br, int brojVrhova, boolean digraph, boolean weighted) throws IOException
 	{	
-		Graph g = new AdjecencyMatrix(brojVrhova, weighted, digraph);
+		Graph g = new AdjacencyMatrix(brojVrhova, weighted, digraph);
 		String line;
 		String[] splitLine;
 		try{
