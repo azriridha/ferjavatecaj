@@ -1,6 +1,6 @@
 package hr.fer.grafovi.model;
 
-public class AdjecencyMatrix implements Graph
+public class AdjacencyMatrix implements Graph
 {
 	private int Vcnt;
 	private int Ecnt = 0;
@@ -8,12 +8,12 @@ public class AdjecencyMatrix implements Graph
 	private final boolean weighted;
 	private Edge matrix[][];
 	
-	public AdjecencyMatrix(int vcnt)
+	public AdjacencyMatrix(int vcnt)
 	{
 		this(vcnt, false, false);
 	}
 	
-	public AdjecencyMatrix(int vcnt, boolean weighted, boolean digraph)
+	public AdjacencyMatrix(int vcnt, boolean weighted, boolean digraph)
 	{
 		this.weighted = weighted;
 		this.digraph = digraph;

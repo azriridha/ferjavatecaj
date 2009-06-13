@@ -10,7 +10,7 @@ public class KirchhoffsTheorem
 
 	public KirchhoffsTheorem(Graph g)
 	{
-		double[][] 	laplacianMatrix = createLaplacianMatrix(g);
+		double[][] laplacianMatrix = createLaplacianMatrix(g);
 		double[][] cofactor = findCofactor(laplacianMatrix);
 		numSpanningTrees = findDeterminant(cofactor);
 	}
@@ -52,7 +52,7 @@ public class KirchhoffsTheorem
 		return det * p;
 	}
 
-	public int LUPDecomposition(double[][] matrix)
+	private int LUPDecomposition(double[][] matrix)
     {
 		int size = matrix.length;
 		int p = 1;
@@ -85,7 +85,8 @@ public class KirchhoffsTheorem
             
     }
 
-	 public void switchRows(double[][] matrix, int row1, int row2)
+	 @SuppressWarnings("unused")
+	private void switchRows(double[][] matrix, int row1, int row2)
      {
              double temp;
              for (int i = 0; i < matrix.length; i++)

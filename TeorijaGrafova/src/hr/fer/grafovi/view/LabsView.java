@@ -168,15 +168,15 @@ public class LabsView extends JPanel implements PropertyChangeListener
 					}
 					else if (e.getActionCommand().equals(PLANARNOST))
 					{
-						// TODO
+						labsCtrl.planarityTest();
 					}
 					else if (e.getActionCommand().equals(BOJANJE_VRHOVA))
 					{
-						// TODO
+						labsCtrl.colorVertices();
 					}
 					else if (e.getActionCommand().equals(BOJANJE_BRIDOVA))
 					{
-						// TODO
+						labsCtrl.colorEdges();
 					}
 					else if (e.getActionCommand().equals(SETNJA))
 					{

@@ -126,10 +126,10 @@ public class MainController implements Constants
 		Graph temp;
 		switch (type) {
 		case MATRICA_SUSJEDSTVA:
-			temp = new AdjecencyMatrix(g.V(), g.weighted(), g.directed());
+			temp = new AdjacencyMatrix(g.V(), g.weighted(), g.directed());
 			break;
 		case LISTA_SUSJEDSTVA:
-			temp = new AdjecencyLists(g.V(), g.weighted(), g.directed());
+			temp = new AdjacencyLists(g.V(), g.weighted(), g.directed());
 			break;
 		default:
 			return;
@@ -158,9 +158,9 @@ public class MainController implements Constants
 		if (g == null)
 			return;
 		propertyChangeSupport.firePropertyChange("vertices", null, g.V()-1);
-		if (g instanceof AdjecencyMatrix)
+		if (g instanceof AdjacencyMatrix)
 			propertyChangeSupport.firePropertyChange("graph", null, MATRICA_SUSJEDSTVA);
-		else if (g instanceof AdjecencyLists)
+		else if (g instanceof AdjacencyLists)
 			propertyChangeSupport.firePropertyChange("graph", null, LISTA_SUSJEDSTVA);
 		int type = graphPanel.getSelected();
 		show(type);
@@ -191,10 +191,10 @@ public class MainController implements Constants
 	public void addVertex(int numberOfVertices)
 	{
 		Graph temp;
-		if (g instanceof AdjecencyLists)
-			temp = new AdjecencyLists(g.V()+numberOfVertices, g.weighted(), g.directed());
-		else if(g instanceof AdjecencyMatrix)
-			temp = new AdjecencyMatrix(g.V()+numberOfVertices, g.weighted(), g.directed());
+		if (g instanceof AdjacencyLists)
+			temp = new AdjacencyLists(g.V()+numberOfVertices, g.weighted(), g.directed());
+		else if(g instanceof AdjacencyMatrix)
+			temp = new AdjacencyMatrix(g.V()+numberOfVertices, g.weighted(), g.directed());
 		else 
 			return;
 		for (int i = 0; i < g.V(); i++)
@@ -218,10 +218,10 @@ public class MainController implements Constants
 		if (index >= g.V())
 			return;
 		Graph temp;
-		if (g instanceof AdjecencyLists)
-			temp = new AdjecencyLists(g.V()-1, g.weighted(), g.directed());
-		else if(g instanceof AdjecencyMatrix)
-			temp = new AdjecencyMatrix(g.V()-1, g.weighted(), g.directed());
+		if (g instanceof AdjacencyLists)
+			temp = new AdjacencyLists(g.V()-1, g.weighted(), g.directed());
+		else if(g instanceof AdjacencyMatrix)
+			temp = new AdjacencyMatrix(g.V()-1, g.weighted(), g.directed());
 		else 
 			return;
 		
