@@ -1,5 +1,6 @@
 package hr.fer.grafovi.view;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -29,6 +30,7 @@ public class InfoView extends JPanel implements PropertyChangeListener
 	{
 		this.setLayout(new GridLayout(1,1));
 		info = new JTextArea();
+		info.setFont(new Font(null, Font.PLAIN, 14));
 		info.setRows(4);
 		info.setEditable(false);
 		info.setLineWrap(true);

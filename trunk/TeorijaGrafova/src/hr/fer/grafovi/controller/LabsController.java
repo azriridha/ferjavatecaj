@@ -10,7 +10,7 @@ import hr.fer.grafovi.model.lab06.ShortestCycle;
 import hr.fer.grafovi.model.lab07.KirchhoffsTheorem;
 import hr.fer.grafovi.model.lab07.SpanningTree;
 import hr.fer.grafovi.model.lab08.GraphMST;
-import hr.fer.grafovi.model.lab09.Demoucron;
+import hr.fer.grafovi.model.lab09.PlanarityTest;
 import hr.fer.grafovi.model.lab11.VertexColoring;
 import hr.fer.grafovi.model.lab12.EdgeColoring;
 import hr.fer.grafovi.model.lab13.CriticalPath;
@@ -236,7 +236,11 @@ public class LabsController
 		if (g == null)
 			return;
 		
-		Demoucron d = new Demoucron(g);
+		PlanarityTest d = new PlanarityTest(g);
+		if (d.isPlanar())
+			System.out.println("Graf je planaran");
+		else
+			System.out.println("Graf nije planaran");
 		
 		System.out.print("proteklo vrijeme: ");
 		Stopwatch.printElapsedTime();	
