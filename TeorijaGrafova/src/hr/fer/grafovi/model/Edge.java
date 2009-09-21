@@ -53,7 +53,7 @@ public class Edge
 			return w;
 		if (x == w)
 			return v;
-		else throw new IllegalArgumentException("Edge.from(int): argument nije vrh brida");
+		else throw new IllegalArgumentException("Edge.other(int): argument nije vrh brida");
 	}
 
 	@Override

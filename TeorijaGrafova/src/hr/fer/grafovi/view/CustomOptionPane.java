@@ -124,8 +124,8 @@ public class CustomOptionPane implements ActionListener, Constants
 		values = new int[4];
 		box = new Box(BoxLayout.Y_AXIS);
 		
-		rSpinner = new JSpinner(new SpinnerNumberModel(VALUE, MIN, MAX, STEP));
-		sSpinner = new JSpinner(new SpinnerNumberModel(VALUE, MIN, MAX, STEP));
+		rSpinner = new JSpinner(new SpinnerNumberModel(3, MIN, MAX, STEP));
+		sSpinner = new JSpinner(new SpinnerNumberModel(3, MIN, MAX, STEP));
 		
 		JPanel rPanel = new JPanel();
 		JPanel sPanel = new JPanel();
