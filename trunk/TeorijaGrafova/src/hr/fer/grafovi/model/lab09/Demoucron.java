@@ -1,6 +1,7 @@
 package hr.fer.grafovi.model.lab09;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import hr.fer.grafovi.model.AdjList;
 import hr.fer.grafovi.model.BiconnectedComponent;
@@ -47,9 +48,9 @@ public class Demoucron {
 				break;
 			}
 			ArrayList<Integer> alphaPath = chosenFragment.getAlphaPath();
-			if (alphaPath.size() > 2)
-				faces.add(chosenFragment.getFace().createFace(alphaPath));
-			//TODO racunanje novih lica za alphapathsize=2
+			System.out.println("alpha path: " + alphaPath);
+
+			faces.add(chosenFragment.getFace().createFace(alphaPath));
 			for (int i = 0; i < alphaPath.size() - 1; i++)
 			{
 				removeEdge(new Edge(alphaPath.get(i), alphaPath.get(i+1)));
@@ -94,6 +95,7 @@ public class Demoucron {
 				fragments.add(fragment);
 			}
 		}
+		HashSet<Edge> visited = new HashSet<Edge>();
 		for (int v = 0; v < embeddedVertices.length; v++)
 		{
 			if (embeddedVertices[v])
@@ -101,15 +103,24 @@ public class Demoucron {
 				AdjList a = g.getAdjList(v);
 				for (Edge e = a.beg(); !a.end(); e = a.nxt())
 				{
-					if (embeddedVertices[e.other(v)])
+					if (embeddedVertices[e.other(v)] && !visited.contains(e))
 					{
 						Fragment f = new Fragment(embeddedVertices);
 						f.insert(e);
 						fragments.add(f);
+						visited.add(e);
 					}
 				}
 			}
 		}
+		//////////////////
+		int k = 0;
+		for (Fragment f : fragments)
+		{
+			System.out.print("fragment " + k++ + ":");
+			f.print();
+		}
+		//////////////////s
 	}
 
 	private void makeFragment(Fragment fragment, int v, boolean[] inFragment) {
@@ -129,14 +140,14 @@ public class Demoucron {
 
 	private void chooseCycle() 
 	{
-		Face face = new Face();
+		ArrayList<Integer> path = new ArrayList<Integer>();
+		boolean visited[] = new boolean[g.V()];
 		int u = 0;
 		int previous = 0;
-		while(!embeddedVertices[u])
+		while(!visited[u])
 		{
-			System.out.print(u + "|");
-			face.insert(u);
-			embeddedVertices[u] = true;
+			path.add(u);
+			visited[u] = true;
 			AdjList a = g.getAdjList(u);
 			for (Edge e = a.beg(); !a.end(); e = a.nxt())
 			{
@@ -144,11 +155,21 @@ public class Demoucron {
 				{
 					previous = u;
 					u = e.other(u);
-					System.out.println(e);
-					removeEdge(e);
 					break;
 				}
 			}
+		}
+		previous = u;
+		Face face = new Face();
+		for (int i = path.size() - 1; i > 0; i--)
+		{
+			int v = path.get(i);
+			face.insert(v);
+			embeddedVertices[v] = true;
+			removeEdge(new Edge(v, previous));
+			previous = v;
+			if (v == u)
+				break;
 		}
 		faces.add(face);
 		faces.add(face.copy());		

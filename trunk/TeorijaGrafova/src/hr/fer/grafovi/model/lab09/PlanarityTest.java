@@ -14,11 +14,11 @@ public class PlanarityTest {
 		for (int i = 0; i < components.numberOfComponents(); i++)
 		{
 			BiconnectedComponent bc = components.getComponent(i);
-			System.out.print(i + ". komponenta ->");
+			System.out.print((i+1) + ". komponenta ->");
 			Edge[] edges = GraphUtilities.edges(bc);
 			for (int j = 0; j < edges.length; j++)
 			{
-				System.out.print(bc.originalEdge(edges[j].getV(), edges[j].getW()) + " ");
+				System.out.print(edges[j] + "(" + bc.originalEdge(edges[j].getV(), edges[j].getW()) + ") ");
 			}
 			System.out.println();
 			if (!checkPlanarity(bc))

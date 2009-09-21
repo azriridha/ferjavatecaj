@@ -38,8 +38,6 @@ public class Face {
 	
 	public Face createFace(ArrayList<Integer> alphaPath)
 	{
-		if (alphaPath.size() == 2)
-			return null;
 		Face newFace = new Face();
 		int first = -1;
 		int last = -1;

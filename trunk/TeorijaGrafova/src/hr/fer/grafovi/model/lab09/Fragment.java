@@ -95,4 +95,11 @@ public class Fragment {
 		} while (!contactVertices.contains(vertex));
 		return alphaPath;
 	}
+	
+	public void print()
+	{
+		for (Edge e : edges)
+			System.out.print(e + " ");
+		System.out.println();
+	}
 }
