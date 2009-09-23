@@ -2,11 +2,11 @@ package hr.fer.grafovi.controller;
 
 import hr.fer.grafovi.model.Graph;
 import hr.fer.grafovi.model.WrongGraphException;
-import hr.fer.grafovi.model.lab04.TravellingSalesmanExact;
-import hr.fer.grafovi.model.lab04.TravellingSalesmanHeuristic;
+import hr.fer.grafovi.model.lab04.LongestClosedTrail;
+import hr.fer.grafovi.model.lab04.ShortestCycle;
 import hr.fer.grafovi.model.lab05.Dijkstra;
-import hr.fer.grafovi.model.lab06.LongestClosedTrail;
-import hr.fer.grafovi.model.lab06.ShortestCycle;
+import hr.fer.grafovi.model.lab06.TravellingSalesmanExact;
+import hr.fer.grafovi.model.lab06.TravellingSalesmanHeuristic;
 import hr.fer.grafovi.model.lab07.KirchhoffsTheorem;
 import hr.fer.grafovi.model.lab07.SpanningTree;
 import hr.fer.grafovi.model.lab08.GraphMST;
@@ -29,10 +29,15 @@ public class LabsController
 			return;
 
 		try {
-			TravellingSalesmanExact tse = new TravellingSalesmanExact(g);
-			System.out.println("Najkraci put (iscrpna pretraga):");
-			tse.printShortestCycle();
-			System.out.println("Duljina najkraceg puta: " + tse.getMinLength());
+			if (g.V() > 11)
+				System.out.println("iscrpna pretraga traje predugo");
+			else
+			{
+				TravellingSalesmanExact tse = new TravellingSalesmanExact(g);
+				System.out.println("Najkraci put (iscrpna pretraga):");
+				tse.printShortestCycle();
+				System.out.println("Duljina najkraceg puta: " + tse.getMinLength());
+			}
 			System.out.print("proteklo vrijeme: ");
 			Stopwatch.printElapsedTime();
 			

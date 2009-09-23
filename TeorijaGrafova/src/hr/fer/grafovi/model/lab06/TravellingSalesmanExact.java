@@ -1,4 +1,4 @@
-package hr.fer.grafovi.model.lab04;
+package hr.fer.grafovi.model.lab06;
 
 import hr.fer.grafovi.model.AdjList;
 import hr.fer.grafovi.model.Edge;
@@ -6,14 +6,15 @@ import hr.fer.grafovi.model.Graph;
 import hr.fer.grafovi.model.WrongGraphException;
 import hr.fer.grafovi.utilities.GraphUtilities;
 
-public class TravellingSalesmanHeuristic {
+public class TravellingSalesmanExact {
 
 	private Graph g;
-	private boolean[] visited;
+	private Edge[] cycle;
 	private Edge[] shortestCycle;
+	private boolean[] visited;
 	private int minLength;
 	
-	public TravellingSalesmanHeuristic(Graph g) throws WrongGraphException
+	public TravellingSalesmanExact(Graph g) throws WrongGraphException
 	{
 		if (g.directed())
 			throw new WrongGraphException("Graf ne smije biti usmjeren");
@@ -22,40 +23,39 @@ public class TravellingSalesmanHeuristic {
 		if (!GraphUtilities.isComplete(g))
 			throw new WrongGraphException("Graf nije potpun");
 		this.g = g;
+		cycle = new Edge[g.V()];
 		shortestCycle = new Edge[g.V()];
 		visited = new boolean[g.V()];
-		tsR(0, 0);
+		minLength = 100 * g.V();
+		tsR(0, 0, 0);
 	}
 
-	private void tsR(int depth, int v) {
+	private void tsR(int depth, int v, int length)
+	{
 		if (depth == g.V() - 1)
 		{
 			Edge e = g.edge(0, v);
-			shortestCycle[depth] = e;
-			minLength += e.getWeight();
+			length += e.getWeight();
+			cycle[depth] = e;
+			if (length < minLength)
+			{
+				minLength = length;
+				System.arraycopy(cycle, 0, shortestCycle, 0, g.V());
+			}
 			return;
 		}
+		
 		visited[v] = true;
-		Edge e = shortestEdgeFrom(v);
-		shortestCycle[v] = e;
-		minLength += e.getWeight();
-		tsR(depth + 1, e.other(v));
-	}
-
-	private Edge shortestEdgeFrom(int v) {
-		int minWeight = 100;
-		Edge min = null;
 		AdjList a = g.getAdjList(v);
 		for (Edge e = a.beg(); !a.end(); e = a.nxt())
 		{
 			int w = e.other(v);
-			if (!visited[w] && e.getWeight() < minWeight)
-			{
-				min = e;
-				minWeight = e.getWeight();
-			}
+			if (visited[w])
+				continue;
+			cycle[depth] = e;
+			tsR(depth + 1, w, length + e.getWeight());
 		}
-		return min;
+		visited[v] = false;
 	}
 	
 	public void printShortestCycle()
